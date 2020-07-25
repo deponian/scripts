@@ -133,6 +133,16 @@ setup_ripgrep () {
 	rm ripgrep.asset
 }
 
+setup_delta () {
+	mkdir tmp
+	cd tmp
+	tar -xzf ../delta.asset
+	mv "$(find . -name delta)" ../
+	cd ..
+	rm -rf tmp
+	rm delta.asset
+}
+
 download_and_setup_shellcheck () {
 	local scversion
 
@@ -187,6 +197,10 @@ main () {
 		# :: ripgrep - a modern replacement for unix grep (or not)
 		download_github_asset BurntSushi/ripgrep linux x86_64 musl
 		setup_ripgrep
+
+		# :: delta - a viewer for git and diff output
+		download_github_asset dandavison/delta linux x86_64 musl
+		setup_delta
 
 		# :: shellcheck - a static analysis tool for shell scripts
 		download_and_setup_shellcheck
