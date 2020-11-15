@@ -143,20 +143,14 @@ setup_delta () {
 	rm delta.asset
 }
 
-download_and_setup_shellcheck () {
-	local scversion
-
-	scversion="stable"
-	echo "Download koalaman/shellcheck:"
-	wget --retry-connrefused \
-		--waitretry=1 \
-		--quiet \
-		--show-progress \
-		"https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz"
-	tar --xz -xf shellcheck-${scversion}.linux.x86_64.tar.xz
-	mv shellcheck-"${scversion}"/shellcheck .
-	rm -rf shellcheck-"${scversion}"
-	rm shellcheck-${scversion}.linux.x86_64.tar.xz
+setup_shellcheck () {
+	mkdir tmp
+	cd tmp
+	tar -xf ../shellcheck.asset
+	mv "$(find . -name shellcheck)" ../
+	cd ..
+	rm -rf tmp
+	rm shellcheck.asset
 }
 
 main () {
@@ -203,7 +197,8 @@ main () {
 		setup_delta
 
 		# :: shellcheck - a static analysis tool for shell scripts
-		download_and_setup_shellcheck
+		download_github_asset koalaman/shellcheck linux x86_64
+		setup_shellcheck
 
 		for binary in *; do
 			chown "$(id -un):$(id -gn)" "${binary}"
