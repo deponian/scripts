@@ -14,7 +14,7 @@ check_software () {
 	do
 		command -v ${program} >/dev/null 2>&1 || \
 		{
-			echo >&2 "This script needs ${program}. Aborting."
+			echo >&2 -e "Aborting.\nThis script needs these programs: \n${*}"
 			exit 1
 		}
 	done
@@ -110,7 +110,7 @@ setup_sharkdp () {
 
 setup_fzf () {
 	# get fzf binary
-	tar -xzf fzf-bin.asset
+	tar -xzf fzf.asset
 
 	# get fzf-tmux script
 	wget --retry-connrefused \
@@ -120,7 +120,7 @@ setup_fzf () {
 		"https://raw.githubusercontent.com/junegunn/fzf/master/bin/fzf-tmux"
 	chmod +x fzf-tmux
 
-	rm fzf-bin.asset
+	rm fzf.asset
 }
 
 setup_ripgrep () {
@@ -185,7 +185,7 @@ main () {
 		setup_sharkdp hexyl
 
 		# :: fzf - a command-line fuzzy finder
-		download_github_asset junegunn/fzf-bin linux amd64
+		download_github_asset junegunn/fzf linux amd64
 		setup_fzf
 
 		# :: ripgrep - a modern replacement for unix grep (or not)
