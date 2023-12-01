@@ -12,17 +12,17 @@ deb_packages () {
 	mode="${1:?"You have to specify mode as first parametr"}"
 	apt update
 	if [[ "${mode}" == "minimal" ]]; then
-		apt install --no-install-recommends bash bc ccze dnsutils git htop iputils-ping mlocate \
+		apt -y install --no-install-recommends bash bc ccze dnsutils git htop iputils-ping mlocate \
 			ncdu openssh-server rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		apt install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
+		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
 			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
 			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
 			mtr-tiny nano ncdu netcat nethogs netmask net-tools nmap openssh-server parted progress \
 			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget \
 			xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		apt install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
+		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
 			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
 			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
 			mtr-tiny nano neovim ncdu netcat nethogs netmask net-tools nmap openssh-server parted \
@@ -41,16 +41,16 @@ rpm_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		dnf --setopt=install_weak_deps=False install bash bc ccze bind-utils git htop iputils \
+		dnf -y --setopt=install_weak_deps=False install bash bc ccze bind-utils git htop iputils \
 			mlocate ncdu openssh-server rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		dnf --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
+		dnf -y --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
 			ccze cronie curl bind-utils ethtool gdisk git gnupg2 htop iputils ioping iotop jid jq less \
 			links lshw mc mlocate mtr nano ncdu nethogs netmask net-tools nmap openssh-server \
 			parted progress rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim wget \
 			xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		dnf --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
+		dnf -y --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
 			ccze cronie curl bind-utils ethtool gdisk git gnupg2 htop iputils ioping iotop jid jq less links \
 			lshw mc mlocate mtr nano neovim ncdu nethogs netmask net-tools nmap openssh-server parted progress \
 			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip \
@@ -74,16 +74,16 @@ arch_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		pacman -S bash bc ccze bind git htop iputils \
+		pacman --noconfirm -S bash bc ccze bind git htop iputils \
 			mlocate ncdu neovim openssh rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		pacman -S cronie bash bc bwm-ng ca-certificates \
+		pacman --noconfirm -S cronie bash bc bwm-ng ca-certificates \
 			ccze curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less \
 			links lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh \
 			parted progress rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip vim wget \
 			xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		pacman -S cronie bash bc bwm-ng ca-certificates \
+		pacman --noconfirm -S cronie bash bc bwm-ng ca-certificates \
 			ccze cronie curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less links \
 			lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh parted progress \
 			rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip \
