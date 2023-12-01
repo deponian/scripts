@@ -79,13 +79,13 @@ arch_packages () {
 	elif [[ "${mode}" == "server" ]]; then
 		pacman -S cronie bash bc bwm-ng ca-certificates \
 			ccze curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less \
-			links lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh \
+			links lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh \
 			parted progress rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip vim wget \
 			xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
 		pacman -S cronie bash bc bwm-ng ca-certificates \
 			ccze cronie curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less links \
-			lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh parted progress \
+			lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh parted progress \
 			rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip \
 			vim wget xz zsh zstd
 	else

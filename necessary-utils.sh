@@ -20,6 +20,14 @@ check_software () {
 	done
 }
 
+check_if_it_is_arch_linux () {
+	local os_id="$(sed -n -E -e 's/^ID=(\S*)$/\1/p' /etc/os-release)"
+	if [[ "${os_id}" == "arch" ]]; then
+		pacman --noconfirm -S fd bat fzf ripgrep git-delta hexyl
+		exit 0
+	fi
+}
+
 # downloads one asset and save it as "project.asset"
 # usage: download_github_asset user/project filter1 [fileter2 [filter3...]]
 download_github_asset () {
@@ -154,6 +162,16 @@ setup_shellcheck () {
 }
 
 main () {
+	if [[ "$EUID" != 0 ]]
+	then
+		echo "Please run as root" >&2
+		exit 1
+	fi
+
+	# we can use pacman on Arch Linux
+	# instead of manual download from Github
+	check_if_it_is_arch_linux
+
 	local install_path
 
 	install_path=${1:?"You have to specify install path as first parametr"}
