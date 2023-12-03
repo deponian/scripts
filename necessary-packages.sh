@@ -13,12 +13,12 @@ deb_packages () {
 	apt update
 	if [[ "${mode}" == "minimal" ]]; then
 		apt -y install --no-install-recommends bash bc ccze dnsutils git htop iputils-ping mlocate \
-			ncdu openssh-server rsync sudo tmux vim zsh
+			neovim ncdu openssh-server rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
 			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
 			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
-			mtr-tiny nano ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted progress \
+			mtr-tiny nano neovim ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted progress \
 			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget \
 			xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
