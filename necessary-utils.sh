@@ -86,7 +86,8 @@ download_github_asset () {
 	then
 		echo "There is more then one asset matching the specified filters." >&2
 		echo "List of assets is: ${filtered_assets[*]}" >&2
-		exit 1
+		echo "Using the first one: ${filtered_assets[0]}" >&2
+		asset="${filtered_assets[0]}"
 	else
 		# After filtering $filtered_assets shoud contain only one asset
 		asset="${filtered_assets[0]}"
