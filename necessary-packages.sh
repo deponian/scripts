@@ -12,22 +12,22 @@ deb_packages () {
 	mode="${1:?"You have to specify mode as first parametr"}"
 	apt update
 	if [[ "${mode}" == "minimal" ]]; then
-		apt -y install --no-install-recommends bash bc ccze dnsutils git htop iputils-ping mlocate \
-			neovim ncdu openssh-server rsync sudo tmux vim zsh
+		apt -y install --no-install-recommends bash bat bc ccze dnsutils fd-find fzf git htop \
+			iputils-ping mlocate ncdu neovim openssh-server ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
-			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
-			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
-			mtr-tiny nano neovim ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted progress \
-			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget \
-			xz-utils zsh zstd
+		apt -y install --no-install-recommends anacron apg apt-transport-https bash bat bc \
+			bridge-utils bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool fd-find \
+			fzf gdisk git gnupg2 htop ifupdown ioping iotop iproute2 iputils-ping jid jq less \
+			links lsb-release lshw mc mlocate mtr-tiny nano ncdu neovim net-tools netcat-openbsd \
+			nethogs netmask nmap openssh-server parted progress ripgrep rsync rsyslog shellcheck \
+			strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
-			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
-			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
-			mtr-tiny nano neovim ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted \
-			progress rsync rsyslog strace sudo sysstat tcpdump telnet tmux \
-			traceroute unzip vim vim-gui-common vlan wget xz-utils zsh zstd
+		apt -y install --no-install-recommends anacron apg apt-transport-https bash bat bc \
+			bridge-utils bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool fd-find \
+			fzf gdisk git gnupg2 htop ifupdown ioping iotop iproute2 iputils-ping jid jq less links \
+			lsb-release lshw mc mlocate mtr-tiny nano ncdu neovim net-tools netcat-openbsd nethogs \
+			netmask nmap openssh-server parted progress ripgrep rsync rsyslog shellcheck strace sudo \
+			sysstat tcpdump telnet tmux traceroute unzip vim vim-gui-common vlan wget xz-utils zsh zstd
 	else
 		echo "Something strange happened." >&2
 	fi
@@ -41,20 +41,20 @@ rpm_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		dnf -y --setopt=install_weak_deps=False install bash bc ccze bind-utils git htop iputils \
-			mlocate ncdu openssh-server rsync sudo tmux vim zsh
+		dnf -y --setopt=install_weak_deps=False install bash bat bc bind-utils ccze fd-find fzf git \
+			git-delta htop iputils mlocate ncdu openssh-server ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		dnf -y --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
-			ccze cronie curl bind-utils ethtool gdisk git gnupg2 htop iputils ioping iotop jid jq less \
-			links lshw mc mlocate mtr nano ncdu nethogs netmask net-tools nmap openssh-server \
-			parted progress rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim wget \
-			xz zsh zstd
+		dnf -y --setopt=install_weak_deps=False install apg bash bat bc bind-utils bwm-ng ca-certificates \
+			ccze cronie cronie-anacron curl ethtool fd-find fzf gdisk git git-delta gnupg2 htop ioping iotop \
+			iputils jid jq less links lshw mc mlocate mtr nano ncdu net-tools nethogs netmask nmap openssh-server \
+			parted progress ripgrep rsync rsyslog shellcheck strace sudo sysstat tcpdump telnet tmux traceroute \
+			unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		dnf -y --setopt=install_weak_deps=False install cronie-anacron apg bash bc bwm-ng ca-certificates \
-			ccze cronie curl bind-utils ethtool gdisk git gnupg2 htop iputils ioping iotop jid jq less links \
-			lshw mc mlocate mtr nano neovim ncdu nethogs netmask net-tools nmap openssh-server parted progress \
-			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip \
-			vim wget xz zsh zstd
+		dnf -y --setopt=install_weak_deps=False install apg bash bat bc bind-utils bwm-ng cronie-anacron \
+			ca-certificates ccze cronie curl ethtool fd-find fzf gdisk git git-delta gnupg2 htop ioping iotop \
+			iputils jid jq less links lshw mc mlocate mtr nano ncdu neovim net-tools nethogs netmask nmap \
+			openssh-server parted progress ripgrep rsync rsyslog shellcheck strace sudo sysstat tcpdump telnet \
+			tmux traceroute unzip vim wget xz zsh zstd
 	else
 		echo "Something strange happened." >&2
 	fi
@@ -74,20 +74,20 @@ arch_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		pacman --noconfirm --needed -S bash bc ccze bind git htop iputils \
-			mlocate ncdu neovim openssh rsync sudo tmux vim zsh
+		pacman --noconfirm --needed -S bash bat bc bind ccze fd fzf git \
+			git-delta htop iputils mlocate ncdu neovim openssh ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		pacman --noconfirm --needed -S cronie bash bc bwm-ng ca-certificates \
-			ccze curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less \
-			links lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh \
-			parted progress rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip vim wget \
-			xz zsh zstd
+		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates \
+			ccze cronie curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils \
+			ioping iotop iputils jq less links lsd lshw mc mlocate mtr nano ncdu neovim \
+			net-tools nethogs nmap openssh parted progress ripgrep rsync shellcheck strace \
+			sudo sysstat tcpdump tmux traceroute unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		pacman --noconfirm --needed -S cronie bash bc bwm-ng ca-certificates \
-			ccze cronie curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less links \
-			lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh parted progress \
-			rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip \
-			vim wget xz zsh zstd
+		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates ccze cronie \
+			curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils ioping iotop iputils \
+			jq less links lsd lshw mc mlocate mtr nano ncdu neovim net-tools nethogs nmap \
+			openssh parted progress ripgrep rsync shellcheck strace sudo sysstat tcpdump tmux \
+			traceroute unzip vim wget xz zsh zstd
 	else
 		echo "Something strange happened." >&2
 	fi
@@ -105,7 +105,7 @@ main () {
 		if [[ "${mode}" =~ ^(minimal|server|desktop)$ ]]; then
 			break
 		else
-			read -r -p 'Incorrect mode. Choose packages mode from "minimal", "server" and "desktop": ' mode
+			read -r -p 'Choose packages mode from "minimal", "server" and "desktop": ' mode
 		fi
 	done
 
