@@ -74,16 +74,16 @@ arch_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		pacman --noconfirm -S bash bc ccze bind git htop iputils \
+		pacman --noconfirm --needed -S bash bc ccze bind git htop iputils \
 			mlocate ncdu neovim openssh rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
-		pacman --noconfirm -S cronie bash bc bwm-ng ca-certificates \
+		pacman --noconfirm --needed -S cronie bash bc bwm-ng ca-certificates \
 			ccze curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less \
 			links lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh \
 			parted progress rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip vim wget \
 			xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		pacman --noconfirm -S cronie bash bc bwm-ng ca-certificates \
+		pacman --noconfirm --needed -S cronie bash bc bwm-ng ca-certificates \
 			ccze cronie curl bind ethtool gdisk git gnupg htop iputils ioping iotop jq less links \
 			lsd lshw mc mlocate mtr nano neovim ncdu nethogs net-tools nmap openssh parted progress \
 			rsync strace sudo sysstat tcpdump inetutils tmux traceroute unzip \
