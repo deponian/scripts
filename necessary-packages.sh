@@ -18,14 +18,14 @@ deb_packages () {
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
 			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
 			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
-			mtr-tiny nano ncdu netcat nethogs netmask net-tools nmap openssh-server parted progress \
+			mtr-tiny nano ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted progress \
 			rsync rsyslog strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget \
 			xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bc bridge-utils \
 			bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool gdisk git gnupg2 htop \
 			ifupdown iputils-ping ioping iotop iproute2 jid jq less links lsb-release lshw mc mlocate \
-			mtr-tiny nano neovim ncdu netcat nethogs netmask net-tools nmap openssh-server parted \
+			mtr-tiny nano neovim ncdu netcat-openbsd nethogs netmask net-tools nmap openssh-server parted \
 			progress rsync rsyslog strace sudo sysstat tcpdump telnet tmux \
 			traceroute unzip vim vim-gui-common vlan wget xz-utils zsh zstd
 	else
