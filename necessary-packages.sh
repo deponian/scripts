@@ -13,19 +13,19 @@ deb_packages () {
 	apt update
 	if [[ "${mode}" == "minimal" ]]; then
 		apt -y install --no-install-recommends bash bat bc ccze dnsutils fd-find fzf git htop \
-			iputils-ping mlocate ncdu neovim openssh-server ripgrep rsync sudo tmux vim zsh
+			iputils-ping ncdu neovim openssh-server ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bat bc \
 			bridge-utils bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool fd-find \
 			fzf gdisk git gnupg2 htop ifupdown ioping iotop iproute2 iputils-ping jid jq less \
-			links lsb-release lshw mc mlocate mtr-tiny nano ncdu neovim net-tools netcat-openbsd \
+			links lsb-release lshw mc mtr-tiny nano ncdu neovim net-tools netcat-openbsd \
 			nethogs netmask nmap openssh-server parted progress ripgrep rsync rsyslog shellcheck \
 			strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bat bc \
 			bridge-utils bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool fd-find \
 			fzf gdisk git gnupg2 htop ifupdown ioping iotop iproute2 iputils-ping jid jq less links \
-			lsb-release lshw mc mlocate mtr-tiny nano ncdu neovim net-tools netcat-openbsd nethogs \
+			lsb-release lshw mc mtr-tiny nano ncdu neovim net-tools netcat-openbsd nethogs \
 			netmask nmap openssh-server parted progress ripgrep rsync rsyslog shellcheck strace sudo \
 			sysstat tcpdump telnet tmux traceroute unzip vim vim-gui-common vlan wget xz-utils zsh zstd
 	else
