@@ -74,16 +74,16 @@ arch_packages () {
 
 	mode="${1:?"You have to specify mode as first parametr"}"
 	if [[ "${mode}" == "minimal" ]]; then
-		pacman --noconfirm --needed -S bash bat bc bind ccze fd fzf git \
+		pacman --noconfirm --needed -S bash bat bc bind fd fzf git \
 			git-delta htop iputils mlocate ncdu neovim openssh ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
 		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates \
-			ccze cronie curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils \
+			cronie curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils \
 			ioping iotop iputils jq less links lsd lshw mc mlocate mtr nano ncdu neovim \
 			net-tools nethogs nmap openssh parted progress ripgrep rsync shellcheck strace \
 			sudo sysstat tcpdump tmux traceroute unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
-		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates ccze cronie \
+		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates cronie \
 			curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils ioping iotop iputils \
 			jq less links lsd lshw mc mlocate mtr nano ncdu neovim net-tools nethogs nmap \
 			openssh parted progress ripgrep rsync shellcheck strace sudo sysstat tcpdump tmux \
