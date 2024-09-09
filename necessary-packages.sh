@@ -18,7 +18,7 @@ deb_packages () {
 		apt -y install --no-install-recommends anacron apg apt-transport-https bash bat bc \
 			bridge-utils bwm-ng ca-certificates ccze cron curl debsums dnsutils ethtool fd-find \
 			fzf gdisk git gnupg2 htop ifupdown ioping iotop iproute2 iputils-ping jid jq less \
-			links lsb-release lshw mc mtr-tiny nano ncdu neovim net-tools netcat-openbsd \
+			links logrotate lsb-release lshw mc mtr-tiny nano ncdu neovim net-tools netcat-openbsd \
 			nethogs netmask nmap openssh-server parted progress ripgrep rsync rsyslog shellcheck \
 			strace sudo sysstat tcpdump telnet tmux traceroute unzip vim vlan wget xz-utils zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
@@ -46,7 +46,7 @@ rpm_packages () {
 	elif [[ "${mode}" == "server" ]]; then
 		dnf -y --setopt=install_weak_deps=False install apg bash bat bc bind-utils bwm-ng ca-certificates \
 			ccze cronie cronie-anacron curl ethtool fd-find fzf gdisk git git-delta gnupg2 htop ioping iotop \
-			iputils jid jq less links lshw mc mlocate mtr nano ncdu net-tools nethogs netmask nmap openssh-server \
+			iputils jid jq less links logrotate lshw mc mlocate mtr nano ncdu net-tools nethogs netmask nmap openssh-server \
 			parted progress ripgrep rsync rsyslog shellcheck strace sudo sysstat tcpdump telnet tmux traceroute \
 			unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
@@ -79,7 +79,7 @@ arch_packages () {
 	elif [[ "${mode}" == "server" ]]; then
 		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates \
 			cronie curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils \
-			ioping iotop iputils jq less links lsd lshw mc mlocate mtr nano ncdu neovim \
+			ioping iotop iputils jq less links logrotate lsd lshw mc mlocate mtr nano ncdu neovim \
 			net-tools nethogs nmap openssh parted progress ripgrep rsync shellcheck strace \
 			sudo sysstat tcpdump tmux traceroute unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
