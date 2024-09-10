@@ -9,7 +9,7 @@ IFS=$'\n\t'
 deb_packages () {
 	local mode
 
-	mode="${1:?"You have to specify mode as first parametr"}"
+	mode="${1:?"You have to specify mode as first parameter"}"
 	apt update
 	if [[ "${mode}" == "minimal" ]]; then
 		apt -y install --no-install-recommends bash bat bc ccze dnsutils fd-find fzf git htop \
@@ -39,7 +39,7 @@ deb_packages () {
 rpm_packages () {
 	local mode
 
-	mode="${1:?"You have to specify mode as first parametr"}"
+	mode="${1:?"You have to specify mode as first parameter"}"
 	if [[ "${mode}" == "minimal" ]]; then
 		dnf -y --setopt=install_weak_deps=False install bash bat bc bind-utils ccze fd-find fzf git \
 			git-delta htop iputils mlocate ncdu openssh-server ripgrep rsync sudo tmux vim zsh
@@ -72,14 +72,14 @@ rpm_packages () {
 arch_packages () {
 	local mode
 
-	mode="${1:?"You have to specify mode as first parametr"}"
+	mode="${1:?"You have to specify mode as first parameter"}"
 	if [[ "${mode}" == "minimal" ]]; then
 		pacman --noconfirm --needed -S bash bat bc bind fd fzf git \
 			git-delta htop iputils mlocate ncdu neovim openssh ripgrep rsync sudo tmux vim zsh
 	elif [[ "${mode}" == "server" ]]; then
 		pacman --noconfirm --needed -S bash bat bc bind bwm-ng ca-certificates \
 			cronie curl ethtool fd fzf gdisk git git-delta gnupg htop inetutils \
-			ioping iotop iputils jq less links logrotate lsd lshw mc mlocate mtr nano ncdu neovim \
+			ioping iotop iputils jq less links logrotate lsd lshw man-db man-pages mc mlocate mtr nano ncdu neovim \
 			net-tools nethogs nmap openssh parted progress ripgrep rsync shellcheck strace \
 			sudo sysstat tcpdump tmux traceroute unzip vim wget xz zsh zstd
 	elif [[ "${mode}" == "desktop" ]]; then
