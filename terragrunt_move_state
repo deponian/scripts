@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+shopt -s extglob nullglob
+IFS=$'\n\t'
+
+from_path="${1:?"usage: ${0} from-dir to-dir"}"
+to_path="${2:?"usage: ${0} from-dir to-dir"}"
+
+if [[ ! -d "${from_path}" ]]; then
+	echo "${from_path} doesn't exist or it's not directory"
+	exit 1
+fi
+
+if [[ ! -d "${to_path}" ]]; then
+	echo "${to_path} doesn't exist or it's not directory"
+	exit 1
+fi
+
+from_dir="$(basename "${from_path}")"
+
+cd "${from_path}"
+
+echo "Pulling state..."
+terragrunt state pull > "/tmp/${from_dir}.tfstate"
+echo "Done"
+cd -
+
+echo "Copying ${from_path} to ${to_path}"
+mkdir -p "${to_path}/${from_path}"
+rsync -r --exclude='.terra*' "${from_path}/" "${to_path}/${from_path}"
+echo "Done"
+
+cd "${to_path}/${from_path}"
+
+echo "Pushing state..."
+terragrunt state push "/tmp/${from_dir}.tfstate"
+echo "Done"
+
+echo "Planning..."
+terragrunt plan
+echo "Done"
